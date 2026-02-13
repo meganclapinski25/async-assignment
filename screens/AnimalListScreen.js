@@ -16,7 +16,8 @@ export default function AnimalListScreen() {
   React.useEffect(() => {
     // TODO (Signpost 6): persist favorites to AsyncStorage whenever favorites changes
     // Hint:
-    // AsyncStorage.setItem('favorites', JSON.stringify(favorites));
+    AsyncStorage.setItem('favorites', JSON.stringify(favorites));
+    
   }, [favorites]);
 
   const toggleFavorite = (url) => {
