@@ -31,6 +31,7 @@ const animalsSlice = createSlice({
     },
     setFavorites: (state, action) => {
       // TODO (Signpost 7): replace favorites with action.payload
+      state.favorites = action.payload
     },
   },
   extraReducers: (builder) => {

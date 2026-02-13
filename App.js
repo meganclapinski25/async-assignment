@@ -19,14 +19,13 @@ const Tab = createBottomTabNavigator();
 function RootNav() {
   const dispatch = useDispatch();
 
+  
+  
   React.useEffect(() => {
     const loadFavorites = async () => {
       const stored = await AsyncStorage.getItem('favorites');
-      if (stored) {
-        dispatch(setFavorites(JSON.parse(stored)));
-      }
     };
-  
+
     loadFavorites();
   }, []);
 
