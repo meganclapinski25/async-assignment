@@ -3,8 +3,8 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 export const fetchAnimals = createAsyncThunk(
   'animals/fetchAnimals',
   async () => {
-    response = await fetch ('https://dog.ceo/api/breeds/image/random/10')
-    data = await response.json();
+    const response = await fetch ('https://dog.ceo/api/breeds/image/random/10')
+    const data = await response.json();
     return data.message;
     // TODO (Signpost 2): fetch 10 random dog images and return an array of URLs
      API: https://dog.ceo/api/breeds/image/random/10
