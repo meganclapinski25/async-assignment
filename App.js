@@ -1,8 +1,9 @@
 import * as React from 'react';
-import { Provider, useSelector } from 'react-redux';
+import { Provider, useSelector, useDispatch } from 'react-redux';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
+
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import store from './store';
@@ -16,16 +17,18 @@ const Tab = createBottomTabNavigator();
  * RootNav is separated so we can use hooks (dispatch/select) after Provider.
  */
 function RootNav() {
-  // NOTE: In Signpost 7 you will hydrate favorites here.
-  // TODO (Signpost 7): load favorites from AsyncStorage and dispatch(setFavorites(...))
-  // Hint:
-  // React.useEffect(() => {
-  //   const load = async () => {
-  //     const stored = await AsyncStorage.getItem('favorites');
-  //     if (stored) dispatch(setFavorites(JSON.parse(stored)));
-  //   };
-  //   load();
-  // }, []);
+  const dispatch = useDispatch();
+
+  React.useEffect(() => {
+    const loadFavorites = async () => {
+      const stored = await AsyncStorage.getItem('favorites');
+      if (stored) {
+        dispatch(setFavorites(JSON.parse(stored)));
+      }
+    };
+  
+    loadFavorites();
+  }, []);
 
   const favoritesCount = useSelector((state) => state.animals.favorites.length);
 
