@@ -41,9 +41,13 @@ const animalsSlice = createSlice({
       })
       .addCase(fetchAnimals.fulfilled, (state, action) => {
         // TODO (Signpost 2): set status to 'succeeded' and set animals = action.payload
+        state.status = 'succeeded'
+        animals = action.payload
       })
       .addCase(fetchAnimals.rejected, (state, action) => {
         // TODO (Signpost 2): set status to 'failed' and set error = action.error.message
+        state.status = 'failed'
+        error = action.error.message
       });
   },
 });
