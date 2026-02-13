@@ -37,7 +37,7 @@ const animalsSlice = createSlice({
       .addCase(fetchAnimals.pending, (state) => {
         // TODO (Signpost 2): set status to 'loading' and clear error
         state.status = 'loading'
-        state.error = 'Error'
+        state.error = null
       })
       .addCase(fetchAnimals.fulfilled, (state, action) => {
         // TODO (Signpost 2): set status to 'succeeded' and set animals = action.payload
@@ -47,7 +47,7 @@ const animalsSlice = createSlice({
       .addCase(fetchAnimals.rejected, (state, action) => {
         // TODO (Signpost 2): set status to 'failed' and set error = action.error.message
         state.status = 'failed'
-        error = action.error.message
+        state.error = action.error.message
       });
   },
 });
