@@ -24,9 +24,10 @@ const animalsSlice = createSlice({
   reducers: {
     addFavorite: (state, action) => {
       // TODO (Signpost 5): add the URL in action.payload to favorites (avoid duplicates)
+      state.favorites.push(action.payload)
     },
     removeFavorite: (state, action) => {
-      // TODO (Signpost 5): remove the URL in action.payload from favorites
+        state.favorites = state.favorites.filter(url => url !== action.payload)
     },
     setFavorites: (state, action) => {
       // TODO (Signpost 7): replace favorites with action.payload
